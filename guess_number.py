@@ -44,6 +44,7 @@ while no_of_guessing_chance > 0:
     no_of_guessing_chance -= 1
     if no_of_guessing_chance == 0:
         print("You've run out of guesses, You lose this round")
+        print(f"Right Number is {user_guess}")
     if result == f"You got it! answer is {int(user_guess)}":
         no_of_guessing_chance = 0
 
