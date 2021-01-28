@@ -13,42 +13,31 @@ for color in colors:
     else:
         random_colors.append((rgb[0], rgb[1], rgb[2]))
 
-
-def forward_without_mark(num):
-    tim.penup()
-    tim.forward(num)
-    tim.pendown()
-
+tim.penup()
 
 tim.speed('fastest')
 tim.shape('circle')
 tim.setheading(220)
-forward_without_mark(400)
+tim.forward(400)
 tim.setheading(0)
 direction = 'left'
 
 for _ in range(10):
     for _ in range(10):
         tim.dot(20, choice(random_colors))
-        forward_without_mark(50)
+        tim.forward(50)
     if direction == 'left':
-        tim.penup()
         tim.backward(50)
-        tim.pendown()
         tim.left(90)
-        forward_without_mark(50)
+        tim.forward(50)
         tim.left(90)
         direction = 'right'
-        print(direction)
     else:
-        tim.penup()
         tim.backward(50)
-        tim.pendown()
         tim.right(90)
-        forward_without_mark(50)
+        tim.forward(50)
         tim.right(90)
         direction = 'left'
-        print(direction)
 
 screen = t.Screen()
 screen.exitonclick()
