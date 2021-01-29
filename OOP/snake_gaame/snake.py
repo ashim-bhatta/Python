@@ -1,23 +1,32 @@
 from turtle import Turtle, Screen
-
+import random
+snake_color = ['red', 'orange', 'blue', 'green', 'yellow', 'purple']
 
 class Snake:
     def __init__(self):
         self.snake_body = []
         self.create_snake()
         self.head = self.snake_body[0]
+        self.head.shape('circle')
 
     def create_snake(self):
         x_axis = 0
         for _ in range(0, 3):
-            snake_part = Turtle('square')
-            snake_part.color('white')
-            snake_part.penup()
-            snake_part.speed('slow')
-            snake_part.pensize(1)
-            snake_part.goto(x_axis, 0)
-            self.snake_body.append(snake_part)
+            self.add_snake_part(x_axis, 0, random.choice(snake_color))
             x_axis -= 20
+
+    def add_snake_part(self, x, y, color):
+        snake_part = Turtle('square')
+        snake_part.color(color)
+        snake_part.shapesize(stretch_wid=0.7)
+        snake_part.penup()
+        snake_part.goto(x, y)
+        self.snake_body.append(snake_part)
+
+    def extend_snake(self):
+        x = self.snake_body[- 1].xcor()
+        y = self.snake_body[- 1].xcor()
+        self.add_snake_part(x, y, random.choice(snake_color))
 
     def move(self):
         for snake_pos in range(len(self.snake_body) - 1, 0, -1):
